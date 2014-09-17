@@ -1,0 +1,25 @@
+<h2>Ohjeet:</h2>
+<div ng-controller="PageController as page" ng-init="page.maxPages = 4">
+    <span class="pageswitcher" ng-click="page.prev()">Edellinen</span>
+    <span class="pageswitcher" ng-click="page.next()">Seuraava</span>
+
+    <p ng-show="page.isSet(0)">Pelataksesi Aliasta, tarvitset vähintään 2 tiimiä. Pelaaminen onnistuu
+        parhaiten puhelimella.</p>
+    <p ng-show="page.isSet(1)">Tiimissä on aina selittäjä ja arvaajat. Selittäjä yrittää selittää
+        ruudulla näkyvän sanan parhaansa mukaan, kunnes arvaajat joko arvaavat sen,
+        tai selittäjä ohittaa sanan liian vaikeana. Puhelin on aina selittäjällä.
+    </p>
+    <p ng-show="page.isSet(2)">Pisteitä saa, kun tiimin arvaajat arvaavat selittäjän sanan oikein. Selittäjä
+        kirjaa puhelimella ylös ohitetut ja oikein arvatut sanat klikkaamalla niin
+        nimettyjä painikkeita. Tiimillä on 60 sekuntia aikaa arvata niin monta sanaa
+        kuin mahdollista. Ajan loputtua muilla tiimeillä on myös mahdollisuus arvata 
+        viimeiseksi jäänyt sana ja kerätä ryöstöpiste.</p>
+    <p ng-show="page.isSet(3)">Vuoron loputtua voi tarkistaa selittäjän tekemät kirjaukset oikein arvatuista
+        ja ohitetuista sanoista. Kirjauksia voi muuttaa klikkaamalla sanoja, ja kun
+        kirjaukset näyttävät hyviltä, vuoro vaihtuu ja pisteet kirjataan ylös. 25 
+        pistettä ensimmäisenä kerännyt tiimi voittaa!
+        (Pisterajan voi määritellä erikseen.)
+
+    </p>
+</div>
+<span id="startgame" ng-click="help.done()">Joo joo, aloita peli!</span>

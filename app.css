@@ -1,0 +1,135 @@
+
+
+#content {
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    text-align: center;
+}
+
+#guessedWords {
+    width: 50%;
+    float: left;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#skippedWords {
+    width: 50%;
+    float: left;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.clear {
+    clear: both;
+}
+
+
+.pageswitcher {
+    padding: 2px;
+    text-decoration: underline;
+}
+
+#startgame {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.formAlign {
+    margin: auto;
+    width: 300px;
+}
+
+.formAlign label {
+    width: 70%;
+    float: left;
+}
+
+.formAlign input {
+    float: left;
+    width: 25%;
+}
+
+.ng-valid.ng-dirty {
+    color: inherit;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    transition: 0.5s;
+}
+
+form .ng-invalid-required {
+    color: red;
+    outline-color: red;
+    margin: 1px;
+    border: 1px solid red;
+}
+
+form .ng-valid.ng-pristine {
+    color: #666;
+}
+
+form .ng-dirty.ng-invalid input {
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    transition: 1s;
+    color: red;
+}
+
+#swipearea {
+    height: 244px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#swipearea * {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    float: left;
+}
+
+#swipearea input {
+    width: 116px;
+    max-width: 116px;
+    margin: auto;
+}
+
+.card-img {
+    width: 168px;
+    height: 244px;
+    max-width: 168px;
+    max-height: 244px;
+    margin: auto;
+}
+
+.card-img * {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    float: left;
+}
+
+#word {
+    word-wrap: break-word;
+    float: none;
+    margin: auto;
+    width: 90%;
+    font-size: 1.3em;
+}
+
+/*#timebar {
+  width: 500px; 
+  height: 50px; 
+  background-image: url('timebar2.png'); 
+  outline: 4px solid black;
+  background-repeat: no-repeat;
+  margin: auto;
+}*/
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+display: none !important;
+}

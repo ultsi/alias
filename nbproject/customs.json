@@ -1,0 +1,17 @@
+{
+    "elements": {
+        "game-setup": {},
+        "game-new": {}
+    },
+    "attributes": {
+        "back-img": {
+            "context": "div"
+        },
+        "card-img": {
+            "context": "div"
+        },
+        "game-view": {
+            "context": "div"
+        }
+    }
+}

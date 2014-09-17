@@ -1,0 +1,12 @@
+<div id="content" ng-controller="GameController as ctrl">
+    <h1>ALIAS</h1>
+    <audio id="alarm" hidden preload="auto">
+        <source src="Alarm.ogg" type="audio/ogg">
+    </audio>
+
+    <div game-help ng-show="ctrl.game.isCurrentState('help')"></div>
+    <div game-setup ng-show="ctrl.game.isCurrentState('setup')"></div>
+    <div game-main ng-show="ctrl.game.isCurrentState('main')"></div>
+    <div game-endofturn ng-show="ctrl.game.isCurrentState('endofturn')"></div>
+    <div game-pointstable ng-hide="ctrl.game.isCurrentState('help') || ctrl.game.isCurrentState('setup')"></div>
+</div>
