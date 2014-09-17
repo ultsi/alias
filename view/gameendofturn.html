@@ -1,5 +1,5 @@
-<span>Tiimin {{eot.game.currentTeamName()}} tulokset</span>
-<br/><br/>
+<h3>Tiimin {{eot.game.currentTeamName()}} tulokset</h3>
+<span style="font-style: italic">Klikkaa sanaa siirtääksesi sen kategoriasta toiseen.</span>
 <div id="skippedWords">
     Skipatut sanat: <br/>
     <span ng-repeat="(key, word) in eot.words.skippedWords" ng-click="eot.fixAsGuessed(key, word)">{{word}}<br/></span>
