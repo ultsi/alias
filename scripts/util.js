@@ -8,6 +8,6 @@ function randomInt(a,b){
     return Math.floor(Math.random() * b + a);
 }
 
-function round(a, d){
-    return Math.round(a^(d-1)) / (10*d);
+function roundTo(a, d){
+    return Math.round(a * Math.pow(10, d)) / Math.pow(10, d);
 }

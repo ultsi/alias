@@ -1,5 +1,5 @@
 <h3>Tiimin {{ctrl.game.currentTeamName()}} vuoro.</h3>
-
+<span ng-hide="ctrl.game.isTurnLive()">Klikkaa korttia aloittaaksesi</span>
 <div id="swipearea">
    <input type="button" value="Skippaa!" ng-click="ctrl.clickSkip()"/>
    <div class="card-img" 

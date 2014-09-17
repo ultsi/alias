@@ -1,13 +1,15 @@
 <span>Tiimin {{eot.game.currentTeamName()}} tulokset</span>
 <br/><br/>
-<div id="guessedWords">
-    Arvatut sanat: <br/>
-    <span ng-repeat="(key, word) in eot.words.guessedWords" ng-click="eot.fixAsSkipped(key, word)">{{word}}<br/></span>
-</div>
 <div id="skippedWords">
     Skipatut sanat: <br/>
     <span ng-repeat="(key, word) in eot.words.skippedWords" ng-click="eot.fixAsGuessed(key, word)">{{word}}<br/></span>
 </div>
+<div id="guessedWords">
+    Arvatut sanat: <br/>
+    <span ng-repeat="(key, word) in eot.words.guessedWords" ng-click="eot.fixAsSkipped(key, word)">{{word}}<br/></span>
+</div>
 <div class="clear">&nbsp;</div>
+<div id="lastWord" ng-show="eot.wasLastWordGuessed()">
+</div>
 <br/>
-<input id="nextTurn" type="button" name="nextTurn" value="Seuraava!" onclick="nextTurn()"/><br/>
+<input id="nextTurn" type="button" value="Seuraava!" ng-click="eot.toNextTurn()"/><br/>

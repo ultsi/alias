@@ -22,8 +22,18 @@ angular
     
     this.currentState = "help";
     this.currentTurn = 0;
-    this.currentWord = "";
     this.guessing = false;
+    
+    this.nextTurn = function(){
+        this.curtime = -1;
+        this.guessing = false;
+        this.currentState = "main";
+        this.currentTurn = (this.currentTurn + 1) % this.settings.teamcount;
+    };
+    
+    this.timeUp = function(){
+        return this.curtime <= 0 && this.guessing;
+    };
     
     this.timeLeft = function(){
         return this.settings.timelimit - this.curtime;

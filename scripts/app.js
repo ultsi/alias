@@ -1,8 +1,5 @@
 'use strict';
 
-function randomInt(a,b){
-    return Math.floor(Math.random() * b + a);
-}
 
 angular.module('alias', ["Game", "Words"])
 
@@ -31,8 +28,7 @@ angular.module('alias', ["Game", "Words"])
     this.game = GameManager;
    
     this.done = function() {
-        this.game.currentState = "main";
-        this.game.currentTurn = randomInt(0, this.game.settings.teamcount);
+        this.game.nextTurn();
     };
 })
 
@@ -63,6 +59,7 @@ function(GameManager, $interval, WordsManager){
         this.game.currentState = "endofturn";
         WordsManager.lastWord = this.currentWord;
         WordsManager.lastWordGuessed = guessed;
+        this.currentWord = "";
     };
     
     this.clickSkip = function(){
@@ -90,13 +87,13 @@ function(GameManager, $interval, WordsManager){
         if(this.game.canEveryoneGuess()){
             return "Aika loppui, kaikki tiimit saavat arvata!";
         } else {
-            return this.game.timeLeft();
+            return roundTo(this.game.timeLeft(), 2);
         }
     };
     
     var stop;
     this.startTurn = function(){
-        if ( angular.isDefined(stop) ) return;
+        if ( angular.isDefined(stop) || this.game.timeUp() ) return;
         this.game.curtime = 0;
         this.game.guessing = true;
         var ctrl = this;
@@ -114,6 +111,7 @@ function(GameManager, $interval, WordsManager){
         if ( angular.isDefined(stop) ){
             $interval.cancel(stop);
             this.game.curtime = -1;
+            stop = undefined;
         }
     };
     
@@ -131,6 +129,25 @@ function(GameManager, $interval, WordsManager){
     this.fixAsGuessed = function(key, word){
         this.words.guessedWords.push(word);
         this.words.skippedWords.splice(key, 1);
+    };
+    
+    this.wasLastWordGuessed = function(){
+        return this.words.lastWordGuessed; 
+    };
+    
+    this.toNextTurn = function(){
+        // give points
+        for(var i=0;i<this.words.guessedWords.length;i++){
+            this.game.teams[this.game.currentTurn].points += 1;
+        }
+        
+        this.words.guessedWords = [];
+        this.words.skippedWords = [];
+        // TODO: this.words.lastWordGuessed = false;
+        // TODO: this.words.lastWord = "";
+        
+        this.game.nextTurn();
+        
     };
     
 }])
