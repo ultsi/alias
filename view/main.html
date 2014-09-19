@@ -8,5 +8,6 @@
     <div game-setup ng-show="ctrl.game.isCurrentState('setup')"></div>
     <div game-main ng-show="ctrl.game.isCurrentState('main')"></div>
     <div game-endofturn ng-show="ctrl.game.isCurrentState('endofturn')"></div>
-    <div game-pointstable ng-hide="ctrl.game.isCurrentState('help') || ctrl.game.isCurrentState('setup')"></div>
+    <div game-results ng-show="ctrl.game.isCurrentState('results')"></div>
+    <div game-pointstable ng-show="ctrl.game.isCurrentState('main') || ctrl.game.isCurrentState('endofturn')"></div>
 </div>

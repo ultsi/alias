@@ -121,6 +121,8 @@ function(GameManager, $interval, WordsManager){
     this.game = gm;
     this.words = wm;
     
+    this.lastGuessTeam = -1;
+    
     this.fixAsSkipped = function(key, word){
         this.words.skippedWords.push(word);
         this.words.guessedWords.splice(key, 1);
@@ -137,17 +139,39 @@ function(GameManager, $interval, WordsManager){
     
     this.toNextTurn = function(){
         // give points
-        for(var i=0;i<this.words.guessedWords.length;i++){
-            this.game.teams[this.game.currentTurn].points += 1;
+        this.game.teams[this.game.currentTurn].points += 
+                this.words.guessedWords.length;
+        
+        // award last guesser
+        this.lastGuessTeam = Number(this.lastGuessTeam);
+        if(this.lastGuessTeam !== -1){
+            this.game.teams[this.lastGuessTeam].points += 1;
+            this.words.guessedWords.push(this.words.lastWordGuessed);
+        } else {
+            this.words.skippedWords.push(this.words.lastWordGuessed);
         }
         
-        this.words.guessedWords = [];
-        this.words.skippedWords = [];
-        // TODO: this.words.lastWordGuessed = false;
-        // TODO: this.words.lastWord = "";
+        this.words.initWordArrays();
         
-        this.game.nextTurn();
-        
+        if(this.game.winner()){
+            this.game.toResults();
+        } else {
+            this.game.nextTurn();
+        }
+    };
+    
+}])
+
+.controller("ResultsController", ["GameManager", "WordsManager", function(gm, wm){
+    this.game = gm;
+    this.words = wm;
+    
+    this.usedWords = function(){
+        return this.words.history.guessed + this.words.history.skipped;
+    };
+    
+    this.skippedWordsPercentage = function(){
+        return this.words.history.skipped / this.usedWords() * 100; 
     };
     
 }])
@@ -185,6 +209,15 @@ function(GameManager, $interval, WordsManager){
         templateUrl: "view/gameendofturn.html",
         controller: "EndofTurnController",
         controllerAs: "eot"
+    };
+})
+
+.directive("gameResults", function(){
+    return {
+        restrict: 'A',
+        templateUrl: "view/gameresults.html",
+        controller: "ResultsController",
+        controllerAs: "results"
     };
 })
 

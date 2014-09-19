@@ -1,0 +1,7 @@
+<div>
+    <h2>Tiimi {{results.game.winner().name}} voitti! Onneksi olkoon!</h2>
+    <img src="images/winner.jpg">
+    <h4>Statistiikkaa</h4>
+    <p>Pelin aikana käytettiin sanakirjasta {{results.usedWords()}} sanaa, joista
+        {{results.skippedWordsPercentage() | number:1}}% skipattiin.</p>
+</div>

@@ -31,6 +31,26 @@ angular
         this.currentTurn = (this.currentTurn + 1) % this.settings.teamcount;
     };
     
+    this.winner = function(){
+        var winner = -1;
+        for(var i=0;i<this.settings.teamcount;i++){
+            if(this.teams[i].points >= this.settings.pointlimit){
+                winner = i;
+                break;
+            }
+        }
+        if(winner !== -1){
+            return this.teams[winner];
+        }
+        return false;
+    };
+    
+    this.toResults = function(){
+        this.guessing = false;
+        this.curtime = -1;
+        this.currentState = "results";
+    };
+    
     this.timeUp = function(){
         return this.curtime <= 0 && this.guessing;
     };

@@ -9,7 +9,14 @@
     <span ng-repeat="(key, word) in eot.words.guessedWords" ng-click="eot.fixAsSkipped(key, word)">{{word}}<br/></span>
 </div>
 <div class="clear">&nbsp;</div>
-<div id="lastWord" ng-show="eot.wasLastWordGuessed()">
+<div id="lastWord" ng-show="eot.words.lastWordGuessed">
+    Viimeisin arvattu sana oli {{eot.words.lastWord}} ja sen arvasi:<br/>
+    <select title="Tiimin nimi" ng-model="eot.lastGuessTeam">
+        <option value="-1">Ei kukaan</option>
+        <option ng-repeat="(key, team) in eot.game.teams"
+                ng-show="eot.game.settings.teamcount > key"
+                value="{{key}}">{{team.name}}</option>
+    </select> 
 </div>
 <br/>
 <input id="nextTurn" type="button" value="Seuraava!" ng-click="eot.toNextTurn()"/><br/>

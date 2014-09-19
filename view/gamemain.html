@@ -1,7 +1,9 @@
 <h3>Tiimin {{ctrl.game.currentTeamName()}} vuoro.</h3>
 <span ng-hide="ctrl.game.isTurnLive()">Klikkaa korttia aloittaaksesi</span>
 <div id="swipearea">
-   <input type="button" value="Skippaa!" ng-click="ctrl.clickSkip()"/>
+    <span class="gameButton buttonSkip" ng-click="ctrl.clickSkip()">
+        &nbsp;
+    </span>
    <div class="card-img" 
         ng-style="{'background-image': 'url(' + ctrl.cardImages[ctrl.game.guessing] + ')'}"
         ng-click="ctrl.startTurn()">
@@ -9,7 +11,9 @@
            {{ctrl.currentWord}}
        </h2>
     </div>
-    <input type="button" value="Oikein!" ng-click="ctrl.clickCorrect()"/>
+    <span class="gameButton buttonCorrect" ng-click="ctrl.clickCorrect()">
+        &nbsp;
+    </span>
 </div>
 <div id="timearea" ng-show="ctrl.game.isTurnLive()">
     {{ctrl.timeText()}}

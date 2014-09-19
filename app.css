@@ -90,10 +90,34 @@ form .ng-dirty.ng-invalid input {
     float: left;
 }
 
-#swipearea input {
+.gameButton {
+    background-image: url('images/buttons2.png');
+    background-position-y: -116px;
+    background-size: 232px;
+    background-color: #FFF;
     width: 116px;
-    max-width: 116px;
+    height: 116px;
+    padding: 0px;
+    border: 0px;
+    display: block;
     margin: auto;
+}
+
+.gameButton:active:hover {
+    border: 0px;
+    background-position-y: -232px;
+}
+
+.gameButton:hover {
+    background-position-y: 0px;
+}
+
+.gameButton.buttonCorrect {
+    background-position-x: 0px;
+}
+
+.gameButton.buttonSkip {
+    background-position-x: 116px;
 }
 
 .card-img {
