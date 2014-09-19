@@ -94,6 +94,11 @@ function(GameManager, $interval, WordsManager){
     var stop;
     this.startTurn = function(){
         if ( angular.isDefined(stop) || this.game.timeUp() ) return;
+        
+        // load the alarm
+        var alarm = document.getElementById("alarm");
+        alarm.load();
+        
         this.game.curtime = 0;
         this.game.guessing = true;
         var ctrl = this;
@@ -112,6 +117,10 @@ function(GameManager, $interval, WordsManager){
             $interval.cancel(stop);
             this.game.curtime = -1;
             stop = undefined;
+            
+            // play alarm
+            var alarm = document.getElementById("alarm");
+            alarm.play();
         }
     };
     
