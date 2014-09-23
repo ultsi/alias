@@ -47,7 +47,7 @@
     float: left;
 }
 
-.formAlign input {
+.formAlign input,select {
     float: left;
     width: 25%;
 }

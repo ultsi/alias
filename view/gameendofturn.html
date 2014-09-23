@@ -13,8 +13,7 @@
     Viimeisin arvattu sana oli {{eot.words.lastWord}} ja sen arvasi:<br/>
     <select title="Tiimin nimi" ng-model="eot.lastGuessTeam">
         <option value="-1">Ei kukaan</option>
-        <option ng-repeat="(key, team) in eot.game.teams"
-                ng-show="eot.game.settings.teamcount > key"
+        <option ng-repeat="(key, team) in eot.game.teams | limitTo: eot.game.settings.teamcount"
                 value="{{key}}">{{team.name}}</option>
     </select> 
 </div>

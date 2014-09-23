@@ -23,14 +23,15 @@ angular.module('alias', ["Game", "Words"])
     };
 })
         
-.controller("SetupController", function(GameManager){
+.controller("SetupController",["GameManager", "WordsManager", function(gm, wm){
     
-    this.game = GameManager;
+    this.game = gm;
+    this.words = wm;
    
     this.done = function() {
         this.game.nextTurn();
     };
-})
+}])
 
 .controller("HelpController", ["GameManager", function(GameManager){
     this.game = GameManager;
@@ -43,6 +44,7 @@ angular.module('alias', ["Game", "Words"])
 .controller("GameController", ["GameManager", "$interval", "WordsManager", 
 function(GameManager, $interval, WordsManager){
     this.game = GameManager;
+    this.alarm = new Audio("Alarm.ogg");
    
     this.cardImages = {
         false: "images/card.png",
@@ -96,8 +98,7 @@ function(GameManager, $interval, WordsManager){
         if ( angular.isDefined(stop) || this.game.timeUp() ) return;
         
         // load the alarm
-        var alarm = document.getElementById("alarm");
-        alarm.load();
+        this.alarm.load();
         
         this.game.curtime = 0;
         this.game.guessing = true;
@@ -119,8 +120,7 @@ function(GameManager, $interval, WordsManager){
             stop = undefined;
             
             // play alarm
-            var alarm = document.getElementById("alarm");
-            alarm.play();
+            this.alarm.play();
         }
     };
     

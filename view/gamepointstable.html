@@ -1,4 +1,4 @@
 <b>Pisteet:</b><br/>
-<div ng-repeat="(key, team) in ctrl.game.teams" ng-show="ctrl.game.settings.teamcount > {{key}}">
+<div ng-repeat="(key, team) in ctrl.game.teams | limitTo: ctrl.game.settings.teamcount">
     <b>{{team.name}}</b>: {{team.points}}
 </div>

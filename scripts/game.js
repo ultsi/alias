@@ -7,7 +7,8 @@ angular
     this.settings = {
         teamcount: 2,
         timelimit: 60,
-        pointlimit: 25
+        pointlimit: 25,
+        wordlist: "words"
     };
     this.curtime = -1;
     

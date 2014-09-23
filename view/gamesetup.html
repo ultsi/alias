@@ -7,13 +7,17 @@
                                         type="number" max="120"/><br/>
         <label>Pisteraja: </label><input ng-model="setup.game.settings.pointlimit" 
                                          type="number" max="99"/>
+        <label>Sanalista: </label>
+        <select ng-model="setup.words.currentList">
+            <option ng-repeat="(key, list) in setup.words.lists"
+                    value="{{key}}">{{list.name}}</option>
+        </select>
     </div>
-    <br/>
-    <br/>
+    <div class="clear">&nbsp;</div>
     <span>Tiimien nimet:</span>
-    <div id="teaminputs" ng-repeat="(key, team) in setup.game.teams">
+    <div id="teaminputs" 
+         ng-repeat="(key, team) in setup.game.teams | limitTo: setup.game.settings.teamcount">
         <input type="text" ng-model="team.name" size="16" 
-               ng-show="setup.game.settings.teamcount > {{key}}"
                ng-click="team.name = ''" required
                placeholder="Tiimi {{key + 1}}"/>
     </div><br/>

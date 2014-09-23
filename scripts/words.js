@@ -7,6 +7,22 @@ angular.module("Words", [])
         skipped: 0
     };
     
+    this.lists = [
+        {
+            name: "2500 yleisintä sanaa",
+            filename: "data/fi_2500.txt.json"
+        },
+        {
+            name: "Biologia",
+            filename: "data/biokasitteet.txt.json"
+        },
+        {
+            name: "Ruotsi",
+            filename: "data/ruotsi.txt.json"
+        }
+    ];
+    
+    this.currentList = 0;
     
     this.skippedWords = [];
     this.guessedWords = [];
@@ -18,7 +34,7 @@ angular.module("Words", [])
     };
     
     var wm = this;
-    $http.get("data/words.json").
+    $http.get(this.lists[this.currentList].filename).
         success(function(data, status, headers, config){
             wm.wordcollection = data.words;
         }).
