@@ -6,8 +6,12 @@ out = io.open(filename..".json", "w")
 
 out:write("{\n  \"words\": [\n    ")
 
+function lower(s)
+  return s:lower():gsub("Ä", "ä"):gsub("Ö", "ö"):gsub("Å", "å")
+end
+
 function clean(s)
-  return s:lower():gsub("Ä", "ä"):gsub("Ö", "ö"):gsub("Å", "å"):gsub("[%p%s]+", "")
+  return lower(s):gsub("[,.:\"']+", ""):gsub("^%s+", ""):gsub("%s+$", "")
 end
 
 for line in file:lines() do
