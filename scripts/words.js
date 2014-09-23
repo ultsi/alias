@@ -33,14 +33,20 @@ angular.module("Words", [])
         return this.wordcollection.splice(randomInt(0, this.wordcollection.length), 1)[0];
     };
     
-    var wm = this;
-    $http.get(this.lists[this.currentList].filename).
-        success(function(data, status, headers, config){
-            wm.wordcollection = data.words;
-        }).
-        error(function(data, status, headers, config){
-            
-        });
+    
+    this.loadWords = function(){
+        
+        var wm = this;
+    
+        $http.get(this.lists[this.currentList].filename).
+            success(function(data, status, headers, config){
+                wm.wordcollection = data.words;
+            }).
+            error(function(data, status, headers, config){
+
+            });
+    
+    };
     
     this.initWordArrays = function() {
         this.history.guessed += this.guessedWords.length;

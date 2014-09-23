@@ -29,6 +29,7 @@ angular.module('alias', ["Game", "Words"])
     this.words = wm;
    
     this.done = function() {
+        this.words.loadWords();
         this.game.nextTurn();
     };
 }])
